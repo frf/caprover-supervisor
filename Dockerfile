@@ -3,5 +3,5 @@ ENV PHP_MAX_EXECUTION_TIME 110
 ENV WEB_DOCUMENT_ROOT /app/public
 RUN apk update && apk add --no-cache supervisor openssh nginx
 COPY ./supervisord.conf /etc/supervisord.conf
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
 
